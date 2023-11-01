@@ -32,7 +32,7 @@ if __name__ == '__main__':
             results = ranker.score(index, query, top_results)
             # ndcg += eval.ndcg(results, query_start + query_num, top_results)
             num_queries+=1
-            print(f'{query.content()}:', index.metadata(results[0][0]).get('content')[:100])
+            print(f'{query.content()} ({results[0][1]}):', index.metadata(results[0][0]).get('content')[:100])
             print()
             if num_queries >= 20:
                 break
