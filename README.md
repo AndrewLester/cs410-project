@@ -2,6 +2,8 @@
 
 ## Development
 
+Install Anaconda.
+
 ```bash
 conda create -n cs410
 conda activate cs410
