@@ -13,5 +13,5 @@ ngram = 1
 filter = "default-unigram-chain"
 
 [query-runner]
-query-path = "wikipedia-queries.txt"
+query-path = "queries.txt"
 query-id-start = 1
