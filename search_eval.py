@@ -34,7 +34,7 @@ if __name__ == '__main__':
             num_queries+=1
             print(f'{query.content()}:', index.metadata(results[0][0]).get('content')[:100])
             print()
-            if num_queries > 20:
+            if num_queries >= 20:
                 break
 
     # ndcg /= num_queries
