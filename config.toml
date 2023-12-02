@@ -5,7 +5,7 @@ dataset = "wikipedia"
 corpus = "line.toml"
 index = "idx"
 
-query-judgements = "wikipedia-qrels.txt"
+query-judgements = "qrels.txt"
 
 [[analyzers]]
 method = "ngram-word"
