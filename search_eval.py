@@ -11,6 +11,7 @@ top_results = 10
 if __name__ == '__main__':
     index = metapy.index.make_inverted_index(config_file)
     ranker = metapy.index.OkapiBM25(k1=1.5,b=0.75,k3=3.5)
+    # ranker = metapy.index.DirichletPrior(0.5)
     eval = metapy.index.IREval(config_file)
 
     with open(config_file, 'r') as f:
