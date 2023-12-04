@@ -23,6 +23,8 @@ if __name__ == '__main__':
     start = time.time()
     query_path = query_cfg.get('query-path', 'queries.txt')
     query_start = query_cfg.get('query-id-start', 0)
+    
+    print(f'Query start: {query_start}')
 
     query = metapy.index.Document()
     ndcg = 0.0
@@ -30,12 +32,18 @@ if __name__ == '__main__':
     print('Running queries')
     with open(query_path) as f:
         for query_num, line in enumerate(f):
+            if query_num < query_start:
+                continue
+
             query.content(line.strip())
             results = ranker.score(index, query, top_results)
-            ndcg += eval.ndcg(results, query_start + query_num, top_results)
+            # ndcg += eval.ndcg(results, query_start + query_num, top_results)
+            avg_p = eval.avg_p(results, query_num, top_results)
+            print("Query {} average precision: {}".format(query_num + 1, avg_p))
             num_queries+=1
             print(f'{query.content()} ({results[0][1]}):', index.metadata(results[0][0]).get('content')[:100])
             print()
+            
             if num_queries >= 20:
                 break
 
