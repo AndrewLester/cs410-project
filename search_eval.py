@@ -6,9 +6,8 @@ import pytoml
 
 
 config_file = 'config.toml'
-top_results = 3
+top_results = 5
 
-# Provided by metapy
 class PL2Ranker(metapy.index.RankingFunction):
     """
     Create a new ranking function in Python that can be used in MeTA
@@ -29,7 +28,7 @@ class PL2Ranker(metapy.index.RankingFunction):
         return sd.query_term_weight * numerator / (tfn + 1.0)
 
 rankers = [
-    PL2Ranker(3),
+    metapy.index.OkapiBM25(k1=0.5, k3=0.5),
     metapy.index.DirichletPrior(0.75),
     metapy.index.JelinekMercer(),
     metapy.index.PivotedLength(),
