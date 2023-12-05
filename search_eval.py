@@ -6,10 +6,10 @@ import pytoml
 
 
 config_file = 'config.toml'
-top_results = 10
+top_results = 3
 
 rankers = [
-    metapy.index.OkapiBM25(k1=5,b=0.75,k3=1.5),
+    metapy.index.OkapiBM25(k1=0.5, k3=0.5),
     metapy.index.DirichletPrior(0.75),
     metapy.index.JelinekMercer(),
     metapy.index.PivotedLength(),
