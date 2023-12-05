@@ -8,6 +8,7 @@ import pytoml
 config_file = 'config.toml'
 top_results = 3
 
+# Provided by metapy
 class PL2Ranker(metapy.index.RankingFunction):
     """
     Create a new ranking function in Python that can be used in MeTA
