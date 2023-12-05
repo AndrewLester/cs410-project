@@ -32,6 +32,7 @@ rankers = [
     metapy.index.DirichletPrior(0.75),
     metapy.index.JelinekMercer(),
     metapy.index.PivotedLength(),
+    PL2Ranker(),
 ]
 
 if __name__ == '__main__':
@@ -83,7 +84,7 @@ if __name__ == '__main__':
                 print(f'Recall: {recall}')
             print()
             
-            if num_queries >= 10:
+            if num_queries >= 500:
                 break
 
     ndcg /= num_queries

@@ -14,4 +14,4 @@ filter = "default-unigram-chain"
 
 [query-runner]
 query-path = "queries.txt"
-query-id-start = 10
+query-id-start = 0
