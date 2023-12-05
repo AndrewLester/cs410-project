@@ -55,6 +55,7 @@ if __name__ == '__main__':
     ndcg = 0.0
     num_queries = 0
     f1 = 0
+    mrr = 0
     # print(eval.f1())
     print('Running queries')
     with open(query_path) as f:
@@ -69,6 +70,12 @@ if __name__ == '__main__':
             recall = eval.recall(results, query_num, top_results)
             f1 += eval.f1(results, query_num, top_results)
 
+            num = 1
+            while not eval.precision(results, query_num, num) and num < top_results:
+                num += 1
+            
+            mrr += 1/num
+
             # print("Query {} average precision: {}".format(query_num + 1, avg_p))
             num_queries+=1
             if len(results) > 0:
@@ -76,14 +83,15 @@ if __name__ == '__main__':
                 print(f'Recall: {recall}')
             print()
             
-            if num_queries >= 500:
+            if num_queries >= 10:
                 break
 
     ndcg /= num_queries
     f1 /= num_queries
+    mrr /= num_queries
 
     print(f'MAP: {eval.map()}')
-
+    print(f'MRR: {mrr}')
     print(f"NDCG@{top_results}: {ndcg}")
     print(f"F1@{top_results}: {f1}")
     print(f"Time: {time.time() - start}")
